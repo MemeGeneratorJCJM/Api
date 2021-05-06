@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 // ======== MySQL ======== //
+require("./app/routes/meme.routes.js")(app);
 require("./app/routes/customer.routes.js")(app);
 
 // ======== Listener ======== //
