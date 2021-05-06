@@ -1,36 +1,3 @@
-# Node.js Rest APIs with Express & MySQL example
-
-For instruction, please visit:
-> [Build Node.js Rest APIs with Express & MySQL](https://bezkoder.com/node-js-rest-api-express-mysql/)
-
-More Practice
-> [Build Node.js Rest APIs with Express, Sequelize & MySQL](https://bezkoder.com/node-js-express-sequelize-mysql/)
-
-> [Server side Pagination in Node.js with Sequelize and MySQL](https://bezkoder.com/node-js-sequelize-pagination-mysql/)
-
-> [Deploying/Hosting Node.js app on Heroku with MySQL database](https://bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/)
-
-Security:
-> [Node.js Express: JWT example | Token Based Authentication & Authorization](https://bezkoder.com/node-js-jwt-authentication-mysql/)
-
-Associations:
-> [Sequelize Associations: One-to-Many Relationship example](https://bezkoder.com/sequelize-associate-one-to-many/)
-
-> [Sequelize Associations: Many-to-Many Relationship example](https://bezkoder.com/sequelize-associate-many-to-many/)
-
-Fullstack:
-> [Vue.js + Node.js + Express + MySQL example](https://bezkoder.com/vue-js-node-js-express-mysql-crud-example/)
-
-> [Vue.js + Node.js + Express + MongoDB example](https://bezkoder.com/vue-node-express-mongodb-mevn-crud/)
-
-> [Angular 8 + Node.js + Express + MySQL example](https://bezkoder.com/angular-node-express-mysql/)
-
-> [Angular 10 + Node.js + Express + MySQL example](https://bezkoder.com/angular-10-node-js-express-mysql/)
-
-> [Angular 11 + Node.js Express + MySQL example](https://bezkoder.com/angular-11-node-js-express-mysql/)
-
-> [React + Node.js + Express + MySQL example](https://bezkoder.com/react-node-express-mysql/)
-
 ## Project setup
 ```
 npm install
@@ -40,3 +7,143 @@ npm install
 ```
 node server.js
 ```
+
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>
+    API
+  </h1>
+  <h2>/user/signup</h2>
+        <table style="width:100%">
+        <tr>
+            <th colspan="5">Request</th>
+        </tr>
+        <tr>
+            <th colspan="5">POST memegenerator-jcg-jmm/user/signup</th>
+        </tr>
+        <tr>
+            <th>Params</th>
+            <th>Value</th>
+            <th>Body</th>
+            <th>Content</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>string</td>
+            <td></td>
+            <td></td>
+            <td>User's email</td>
+        </tr>
+        <tr>
+            <td>username</td>
+            <td>string</td>
+            <td></td>
+            <td></td>
+            <td>User's username</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>string</td>
+            <td></td>
+            <td></td>
+            <td>User's password</td>
+        </tr>
+        <tr>
+            <td>idMeme</td>
+            <td>Array[String]</td>
+            <td></td>
+            <td></td>
+            <td>User's idMemes</td>
+        </tr>
+   </table>
+   <table style="width:100%">
+        <tr>
+            <th colspan="4">Response</th>
+        </tr>
+        <tr>
+            <th colspan="4">POST memegenerator-jcg-jmm/user/signup</th>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <th>Params</th>
+            <th>Value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td>msg</td>
+            <td>JSON</td>
+            <td>Content can not be empty!</td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td>err</td>
+            <td>JSON</td>
+            <td>Some error occurred while creating the User</td>
+        </tr>
+    </table>
+  </h2>
+  
+  
+  <h2>/user/signin</h2>
+        <table style="width:100%">
+        <tr>
+            <th colspan="5">Request</th>
+        </tr>
+        <tr>
+            <th colspan="5">POST memegenerator-jcg-jmm/user/signin</th>
+        </tr>
+        <tr>
+            <th>Params</th>
+            <th>Value</th>
+            <th>Body</th>
+            <th>Content</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>string</td>
+            <td></td>
+            <td></td>
+            <td>User's email</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>string</td>
+            <td></td>
+            <td></td>
+            <td>User's password</td>
+        </tr>
+   </table>
+   <table style="width:100%">
+        <tr>
+            <th colspan="4">Response</th>
+        </tr>
+        <tr>
+            <th colspan="4">POST memegenerator-jcg-jmm/user/signin</th>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <th>Params</th>
+            <th>Value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>404</td>
+            <td>msg</td>
+            <td>JSON</td>
+            <td>Not found User with email</td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td>err</td>
+            <td>JSON</td>
+            <td>Error retrieving User with email</td>
+        </tr>
+    </table>
+  </h2>
+</body>
+</html>
