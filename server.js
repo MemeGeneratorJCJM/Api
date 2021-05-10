@@ -4,25 +4,26 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const app = express();
 var cors = require('cors');
+var crypto = require('crypto');
+const upload = require('express-fileupload');
 
 // ======== App ======== //
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-var corsOptions = {
-  origin: function (origin, callback) {
-    // db.loadOrigins is an example call to load
-    // a list of origins from a backing database
-    db.loadOrigins(function (error, origins) {
-      callback(error, origins)
-    })
-  }
-}
-
 // ======== Basic Endpoint ======== //
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido a la API de MemeGenerator" });
+});
+
+// Enrutamiento para todas las peticiones que lleguen, prepara el header de la response para evitar errores
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Origin');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
 });
 
 // ======== MySQL ======== //
