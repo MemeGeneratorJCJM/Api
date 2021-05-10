@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 var cors = require('cors');
 var crypto = require('crypto');
-const upload = require('express-fileupload');
+//const upload = require('express-fileupload');
 
 // ======== App ======== //
 app.use(bodyParser.json());
