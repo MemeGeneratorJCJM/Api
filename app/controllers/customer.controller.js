@@ -18,7 +18,7 @@ exports.create = (req, res) => {
   });
 
   // Save User in the database
-  Customer.create(customer, (err, data) => {
+  Customer.create(req.body.email,req.body.username,req.body.password,req.body.idMeme, (err, data) => {
     if (err)
       res.status(500).send({
         message:

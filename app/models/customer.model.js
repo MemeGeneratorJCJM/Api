@@ -8,8 +8,8 @@ const Customer = function(customer) {
   this.idMeme = customer.idMeme;
 };
 
-Customer.create = (newCustomer, result) => {
-  sql.query("INSERT INTO users SET $1", newCustomer, (err, res) => {
+Customer.create = (email,username,password,idMeme, result) => {
+  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ('$1','$2','$3',$4);",[email,username,password,idMeme], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -22,7 +22,7 @@ Customer.create = (newCustomer, result) => {
 };
 
 Customer.findByEmail = (email, result) => {
-  sql.query(`SELECT * FROM users WHERE email like $1`,[email], (err, res) => {
+  sql.query(`SELECT * FROM users WHERE email like  $1`,[email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
