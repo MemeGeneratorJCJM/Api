@@ -111,7 +111,7 @@ Customer.removeAll = result => {
 
 Customer.login = (email, password, result) => {
   sql.query(
-    "SELECT * FROM users WHERE email like '"+ email + "' and password like '"+ password+ "'" ,(err,res) => {
+    "SELECT * FROM users WHERE email like '"+ customer.email + "' and password like '"+ customer.password+ "'" ,(err,res) => {
       if (err) {
       console.log("error: ", err);
       result(err, null);
