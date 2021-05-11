@@ -56,7 +56,7 @@ Customer.getAll = result => {
 Customer.updateById = (id, customer, result) => {
   //Update user
   sql.query(
-    "UPDATE users SET email = ?, username = ?, password = ?, idMeme = ? WHERE idUser = ?",
+    "UPDATE users SET email = $1, username = $2, password = $3, idMeme = $4 WHERE idUser = $5",
     [customer.email, customer.username, customer.password, customer.idMeme, id],
     (err, res) => {
       if (err) {
@@ -78,7 +78,7 @@ Customer.updateById = (id, customer, result) => {
 };
 
 Customer.remove = (id, result) => {
-  sql.query("DELETE FROM users WHERE idUser = ?", id, (err, res) => {
+  sql.query("DELETE FROM users WHERE idUser = $1", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -111,7 +111,7 @@ Customer.removeAll = result => {
 
 Customer.login = (email, password, result) => {
   sql.query(
-    "SELECT * FROM users WHERE email like '"+ customer.email + "' and password like '"+ customer.password+ "'" ,(err,res) => {
+    "SELECT * FROM users WHERE email like '"+ email + "' and password like '"+ password+ "'" ,(err,res) => {
       if (err) {
       console.log("error: ", err);
       result(err, null);
