@@ -9,7 +9,7 @@ const Customer = function(customer) {
 };
 
 Customer.create = (email,username,password,idMeme, result) => {
-  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ('$1','$2','$3',$4);",[email,username,password,idMeme], (err, res) => {
+  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ('"$1"','"$2"','"$3"',"$4");",[email,username,password,idMeme], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
