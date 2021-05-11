@@ -1,3 +1,4 @@
+/*
 const mysql = require("mysql");
 const dbConfig = require("../config/db.config.js");
 // Create a connection to the database
@@ -14,3 +15,18 @@ connection.connect(error => {
   console.log("Successfully connected to the database.");
 });
 module.exports = connection;
+
+*/
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+
+module.exports = client;
