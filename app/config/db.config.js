@@ -1,3 +1,3 @@
 //module.exports = {  HOST: "sql311.byethost14.com",  USER: "b14_28587920",  PASSWORD: "B7z5w2000",  DB: "b14_28587920_meme_generator"};
-module.exports = {  HOST: "ec2-52-4-111-46.compute-1.amazonaws.com:5432",  USER: "hopfrcjsmiehmi",  PASSWORD: "42d4f9172cf9747a3ea867a4e89d4c9bffde9a19bebc4ba34ad95121331161eb",  DB: "d94ejhfuenpg6m"};
+module.exports = {  HOST: "ec2-54-163-97-228.compute-1.amazonaws.com:5432",  USER: "obacxigpuzujel",  PASSWORD: "4b8532e5dbc0c4c19ba4e0f2e10ac94e0d09a9fc7a396861cb7aaab82fb3e572",  DB: "d7q4g2nf1u4n5d"};
 //module.exports = {  HOST: "localhost",  USER: "memeGenerator",  PASSWORD: "admin",  DB: "test"};
