@@ -9,7 +9,7 @@ const Customer = function(customer) {
 };
 
 Customer.create = (newCustomer, result) => {
-  sql.query("INSERT INTO users SET ?", newCustomer, (err, res) => {
+  sql.query("INSERT INTO users SET $1", newCustomer, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -22,7 +22,7 @@ Customer.create = (newCustomer, result) => {
 };
 
 Customer.findByEmail = (email, result) => {
-  sql.query(`SELECT * FROM users WHERE email like ${email}`, (err, res) => {
+  sql.query(`SELECT * FROM users WHERE email like $1`,[email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -111,7 +111,7 @@ Customer.removeAll = result => {
 
 Customer.login = (email, password, result) => {
   sql.query(
-    "SELECT * FROM users WHERE email like '"+ email + "' and password like '"+ password+ "'" ,(err,res) => {
+    "SELECT * FROM users WHERE email like '$1' and password like '$2'",[email,password] ,(err,res) => {
       if (err) {
       console.log("error: ", err);
       result(err, null);
