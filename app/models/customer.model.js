@@ -19,13 +19,6 @@ Customer.create = (newCustomer, result) => {
     console.log("created customer: ", { id: res.idUser, ...newCustomer });
     result(null, { id: res.idUser, ...newCustomer });
   });
-  sql.query("UPDATE users SET password = SHA('"+this.password+"') WHERE username like '"+this.username+"';", (err,res) => {
-    if(err){
-      console.log("error",err);
-      result(err, null);
-      return;
-    }
-  });
 };
 
 Customer.findByEmail = (email, result) => {
