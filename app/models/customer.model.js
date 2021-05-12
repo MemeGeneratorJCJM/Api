@@ -23,7 +23,7 @@ Customer.create = (email,username,password,idMeme, result) => {
 };
 
 Customer.findByEmail = (email, result) => {
-  sql.query('SELECT * FROM users WHERE idUser ='+email+';', [email], (err, res) => {
+  sql.query('SELECT * FROM users WHERE idUser = 1;', (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
