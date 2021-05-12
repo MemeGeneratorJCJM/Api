@@ -8,15 +8,7 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
-  // Create a User
-  const customer = new Customer({
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password,
-    idMeme: req.body.idMeme
-  });
-
+  
   // Save User in the database
   Customer.create(req.body.email,req.body.username,req.body.password,req.body.idMeme, (err, data) => {
     if (err) {
