@@ -16,6 +16,7 @@ Customer.create = (email,username,password,idMeme, result) => {
       return;
     }
 
+
     console.log("created customer: ", { id: res.idUser, ...newCustomer });
     result(null, { id: res.idUser, ...newCustomer });
   });
