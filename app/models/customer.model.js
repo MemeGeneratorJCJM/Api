@@ -15,12 +15,7 @@ Customer.create = (email,username,password, result) => {
       result(err, null);
       return;
     }
-    const createdUser =
-    {
-      "Username": '"'+username+'"',
-      "Email": '"'+email+'"',
-      "Password": '"'+password+'"'
-    };
+    const createdUser ="Username": '"'+username+'"',"Email": '"'+email+'"',"Password": '"'+password+'"';
     console.log("Customer created");
     result(null,createdUser);
   });
