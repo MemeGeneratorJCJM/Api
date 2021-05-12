@@ -7,9 +7,9 @@ Customer.create = (email,username,password,idMeme, result) => {
       result(err, null);
       return;
     }
-    const userCreated = "Email: "+email+", Password: "+password+", Username: "+username+", idMeme: "+idMeme;
+    //const userCreated = "Email: "+email+", Password: "+password+", Username: "+username+", idMeme: "+idMeme;
     console.log("Customer created");
-    result(null,userCreated);
+    result(null,"OK");
   });
 };
 
