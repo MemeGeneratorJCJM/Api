@@ -43,14 +43,10 @@ Customer.findByEmail = (email, result) => {
 
 Customer.getAll = result => {
   sql.query("SELECT * FROM users;", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
+    if (error) {
+      throw error
     }
-
-    console.log("users: ", res);
-    result(null, res);
+    response.status(200).json(results.rows)
   });
 };
 
