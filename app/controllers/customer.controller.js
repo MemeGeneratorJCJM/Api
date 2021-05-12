@@ -127,11 +127,11 @@ exports.loginUser = (req,res) =>{
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: "Not found User with email " + req.body.email
+          message: "Not found User with email " + req.body.email + " and with password " + password
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving User with email " + req.body.email
+          message: "Error retrieving User with email " + req.body.email + " and with password " + password
         });
       }
     } else res.send(data);
