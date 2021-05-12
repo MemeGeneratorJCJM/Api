@@ -1,13 +1,5 @@
 const sql = require("./db.js");
 
-// constructor
-const Customer = function(customer) {
-  this.email = customer.email;
-  this.username = customer.username;
-  this.password = customer.password;
-  this.idMeme = customer.idMeme;
-};
-
 Customer.create = (email,username,password,idMeme, result) => {
   sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
     if (err) {
@@ -15,10 +7,9 @@ Customer.create = (email,username,password,idMeme, result) => {
       result(err, null);
       return;
     }
-
-
+    const userCreated = "Email: "+email+", Password: "+password+", Username: "+username+", idMeme: "+idMeme;
     console.log("Customer created");
-    result(null,"OK");
+    result(null,userCreated);
   });
 };
 
@@ -113,7 +104,6 @@ Customer.login = (email, password, result) => {
       return;
     }
 
-    console.log("users: ", res);
     result(null, res);
   });
 };
