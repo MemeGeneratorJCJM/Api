@@ -8,9 +8,9 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
+  
   // Save User in the database
-  Customer.create(req.body.email,req.body.username,req.body.password, (err, data) => {
+  Customer.create(req.body.email,req.body.username,req.body.password,req.body.idMeme, (err, data) => {
     if (err) {
       if (err.kind === "No Content") {
         res.status(204).send({
