@@ -1,18 +1,17 @@
 const sql = require("./db.js");
 
-Customer.create = (email,username,password,idMeme, result) => {
-  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
+Customer.create = (username,password,email,idMeme, result) => {
+  sql.query(
+    "INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(err, null);
+      result(null, err);
       return;
     }
-    //const userCreated = "Email: "+email+", Password: "+password+", Username: "+username+", idMeme: "+idMeme;
-    console.log("Customer created");
-    result(null,"OK");
+
+    result(null, res);
   });
 };
-
 Customer.findByEmail = (email, result) => {
   sql.query("SELECT * FROM users WHERE email like $1",[email], (err, res) => {
     if (err) {
