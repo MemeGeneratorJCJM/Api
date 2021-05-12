@@ -9,7 +9,7 @@ const Customer = function(customer) {
 };
 
 Customer.create = (email,username,password,idMeme, result) => {
-  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[email,username,password,idMeme], (err, res) => {
+  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -57,7 +57,7 @@ Customer.getAll = result => {
 Customer.updateById = (id, customer, result) => {
   //Update user
   sql.query(
-    "UPDATE users SET email = $0, username = $1, password = $2, idMeme = $3 WHERE idUser = $4",
+    "UPDATE users SET email = $1, username = $2, password = $3, idMeme = $4 WHERE idUser = $5",
     [customer.email, customer.username, customer.password, customer.idMeme, id],
     (err, res) => {
       if (err) {
