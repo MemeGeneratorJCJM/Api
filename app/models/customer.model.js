@@ -23,7 +23,7 @@ Customer.create = (email,username,password,idMeme, result) => {
 };
 
 Customer.findByEmail = (email, result) => {
-  sql.query('SELECT * FROM users;', (err, res) => {
+  sql.query(`SELECT * FROM users WHERE email like  $1`,[email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -42,7 +42,7 @@ Customer.findByEmail = (email, result) => {
 };
 
 Customer.getAll = result => {
-  sql.query("SELECT * FROM users", (err, res) => {
+  sql.query("SELECT * FROM users;", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -111,8 +111,7 @@ Customer.removeAll = result => {
 };
 
 Customer.login = (email, password, result) => {
-  sql.query(
-    "SELECT * FROM users WHERE email = 'Test@gmail.com';",(err,res) => {
+  sql.query("SELECT * FROM users;", (err, res) => {
     //"SELECT * FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
       if (err) {
       console.log("error: ", err);
