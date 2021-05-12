@@ -19,17 +19,17 @@ exports.create = (req, res) => {
 
   // Save User in the database
   Customer.create(req.body.email,req.body.username,req.body.password,req.body.idMeme, (err, data) => {
-    if (err)
+    if (err){
       res.status(500).send({
         message:
           err.message || "Some error occurred while creating the User."
       });
-
+    } else{
       res.status(201).send({
         message:
           err.message || "User added"
       });
-    else res.send(data);
+    } else res.send(data);
   });
 };
 
