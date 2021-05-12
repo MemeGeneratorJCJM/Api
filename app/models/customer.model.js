@@ -8,14 +8,19 @@ const Customer = function(customer) {
   this.idMeme = customer.idMeme;
 };
 
-Customer.create = (email,username,password,idMeme, result) => {
-  sql.query("INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
+Customer.create = (email,username,password, result) => {
+  sql.query("INSERT INTO users (username,password,email) VALUES ($1,$2,$3,$4);",[username,password,email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-    const createdUser = "Username: "+username+";Email: "+email+";Password: "+password+";idMeme: "+idMeme;
+    const createdUser =
+    {
+      "Username": '"'+username+'"',
+      "Email": '"'+email+'"',
+      "Password": '"'+password+'"'
+    }
     console.log("Customer created");
     result(null,createdUser);
   });
