@@ -34,6 +34,19 @@ Customer.findByEmail = (email, result) => {
   });
 };
 
+Customer.findByUsername = (username, result) => {
+  sql.query("SELECT * FROM users WHERE username like $1",[username], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("users: ", res);
+    result(null, res);
+  });
+};
+
 Customer.getAll = result => {
   sql.query("SELECT * FROM users;", (err, res) => {
     if (err) {

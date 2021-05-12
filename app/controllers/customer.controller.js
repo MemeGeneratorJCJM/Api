@@ -8,7 +8,7 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-  
+
   // Save User in the database
   Customer.create(req.body.email,req.body.username,req.body.password,req.body.idMeme, (err, data) => {
     if (err) {
@@ -54,6 +54,22 @@ exports.findOne = (req, res) => {
   });
 };
 
+// Find a single User with a username
+exports.findOneByUsername = (req, res) => {
+  Customer.findByUsername(req.params.username, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with username ${req.params.username}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User with username " + req.params.username
+        });
+      }
+    } else res.send(data);
+  });
+};
 // Update a User identified by the idUser in the request
 exports.update = (req, res) => {
   // Validate Request
