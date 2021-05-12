@@ -20,7 +20,7 @@ Customer.create = (email,username,password, result) => {
       "Username": '"'+username+'"',
       "Email": '"'+email+'"',
       "Password": '"'+password+'"'
-    }
+    };
     console.log("Customer created");
     result(null,createdUser);
   });
