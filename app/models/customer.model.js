@@ -18,7 +18,7 @@ Customer.create = (email,username,password,idMeme, result) => {
 
 
     console.log("Customer created");
-    result(null,"OK");
+    result.status(201).send(`User added`);
   });
 };
 
