@@ -106,25 +106,16 @@ Customer.removeAll = result => {
 
 Customer.login = (email, password, result) => {
   sql.query(
-    "SELECT username FROM users WHERE idUser = 1;",(err,res) => {
-    //"SELECT username FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
-      if (err) {
+    "SELECT username FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
+    if (err) {
       console.log("error: ", err);
-      console.log("email: "+email+ " password: "+password)
-      result(err, null);
+      result(null, err);
       return;
     }
 
-    if (res.length) {
-      console.log("found customer: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    // not found Customer with the id
-    result({ kind: "not_found" }, null);
-    }
-  );
+    console.log("users: ", res);
+    result(null, res);
+  });
 };
 
 module.exports = Customer;
