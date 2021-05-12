@@ -43,10 +43,14 @@ Customer.findByEmail = (email, result) => {
 
 Customer.getAll = result => {
   sql.query("SELECT * FROM users;", (err, res) => {
-    if (error) {
-      throw error
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
     }
-    response.status(200).json(results.rows)
+
+    console.log("users: ", res);
+    result(null, res);
   });
 };
 
@@ -107,8 +111,8 @@ Customer.removeAll = result => {
 };
 
 Customer.login = (email, password, result) => {
-  sql.query("SELECT * FROM users;", (err, res) => {
-    //"SELECT * FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
+  sql.query(
+    "SELECT * FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
       if (err) {
       console.log("error: ", err);
       console.log("email: "+email+ " password: "+password)
