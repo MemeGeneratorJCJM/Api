@@ -2,7 +2,7 @@ const sql = require("./db.js");
 
 Customer.create = (username,password,email,idMeme, result) => {
   sql.query(
-    "INSERT INTO users (username,password,email,idMeme) VALUES ($1,$2,$3,$4);",[username,password,email,idMeme], (err, res) => {
+    "INSERT INTO users (email,username,password) VALUES ($1,$2,$3);",[email,username,password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
