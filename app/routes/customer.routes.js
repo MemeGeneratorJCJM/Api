@@ -20,10 +20,10 @@ module.exports = app => {
   app.get("/user/findByEmail/:email", customers.findOne);
 
   // Retrieve some memes with username ✔️
-  app.get("/user/findByUsername/:username", customers.findOneByUsername);
+  app.get("/user/findMemesByUsername/:username", customers.findOneByUsername);
 
   // Retrieve some memes with username, category name or meme name 
-  app.get("/user/findByUsername/:values", customers.findSomeMemes);
+  app.get("/user/findMemes/:value", customers.findSomeMemes);
 
   // Update a User with idUser ✔️
   app.put("/user/update/:idUser", customers.update);
