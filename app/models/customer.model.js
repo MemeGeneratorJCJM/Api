@@ -131,7 +131,17 @@ Customer.removeAll = result => {
 };
 
 Customer.login = (email, password, result) => {
-  sql.query(
+  var query = sql.query("SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"';");
+  var rows = [];
+  query.on('row', function(row, res) {
+    rows.push(row);
+  });
+  query.on('end', function(result) {
+    console.log(result.rowCount + ' rows were received');
+  });
+    //client.end();
+  console.log(rows);
+  /*sql.query(
     "SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
     if (err) {
       console.log("error: ", err);
@@ -140,7 +150,7 @@ Customer.login = (email, password, result) => {
     }
 
     result(null, res);
-  });
+  });*/
 };
 
 module.exports = Customer;
