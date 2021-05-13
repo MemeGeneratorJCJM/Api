@@ -48,10 +48,17 @@ Customer.findByUsername = (username, result) => {
 };
 
 Customer.findMemes = (value, result) => {
-  sql.query("select memes.* from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value])
-  sql.query("select memes.* from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[value])
-  sql.query("select memes.* from memes where name like $1;",[value])
-  result(null, result);
+  sql.query(
+    "select distinct memes.file from categories,memes,users where categories.name like $1 or users.username like $1 or memes.name like $1 or users.idMeme = memes.idMeme or memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("users: ", res);
+    result(null, res);
+  });
 };
 
 Customer.getAll = result => {
