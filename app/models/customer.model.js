@@ -124,12 +124,13 @@ Customer.login = (email, password, result) => {
       result(null, err);
       return;
     }
-    if (res.rows = null){
+    if (res.rows.length <= 0){
       console.log("error: ", err);
       result(null,err);
+    }else{
+      console.log("suuuuuuuuuuuuuuuuuuuuuuuuuuu");
+      result(null, res);
     }
-
-    result(null, res.rows);
   });
 };
 
