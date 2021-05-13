@@ -56,7 +56,7 @@ Customer.getAll = result => {
     }
 
     console.log("users: ", res);
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
