@@ -17,7 +17,7 @@ Customer.create = (email,username,password,idMeme, result) => {
     }
     const createdUser = '{"Username": "'+username+'","Email": "'+email+'","Password": "'+password+'","idMeme": "'+idMeme+'"}';
     console.log("Customer created");
-    result(null,createdUser);
+    result(null,res.rows);
   });
 };
 
@@ -30,7 +30,7 @@ Customer.findByEmail = (email, result) => {
     }
 
     console.log("users: ", res);
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
@@ -99,7 +99,7 @@ Customer.remove = (id, result) => {
     }
 
     console.log("deleted customer with id: ", id);
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
@@ -112,20 +112,20 @@ Customer.removeAll = result => {
     }
 
     console.log(`deleted ${res.affectedRows} users`);
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
 Customer.login = (email, password, result) => {
   sql.query(
-    "SELECT * FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
+    "SELECT * FROM users WHERE email like '"+email+"' and password like '"+password+"';",(err,res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
