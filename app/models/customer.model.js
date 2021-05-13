@@ -50,6 +50,7 @@ Customer.findByUsername = (username, result) => {
 Customer.findMemes = (value, result) => {
   sql.query(
     "select distinct memes.file from categories,memes,users where categories.name like $1 or users.username like $1 or memes.name like $1 or users.idMeme = memes.idMeme or memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    
     if (err) {
       console.log("error: ", err);
       result(null, err);
