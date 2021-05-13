@@ -132,7 +132,7 @@ Customer.removeAll = result => {
 
 Customer.login = (email, password, result) => {
   //var query = sql.query("SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"';");
-  var res = await sql.query("SELECT * FROM users");
+  var res = sql.query("SELECT * FROM users");
   res.rows.forEach(row=>{
       console.log(row);
   });
