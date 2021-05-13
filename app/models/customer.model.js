@@ -35,7 +35,7 @@ Customer.findByEmail = (email, result) => {
 };
 
 Customer.findByUsername = (username, result) => {
-  sql.query("SELECT * FROM users WHERE username like $1",[username], (err, res) => {
+  sql.query("SELECT distinct memes.file FROM users,memes WHERE users.username like $1 and users.idMeme=memes.idMeme;",[username], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
