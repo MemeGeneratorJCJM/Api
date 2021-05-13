@@ -129,7 +129,7 @@ Customer.login = (email, password, result) => {
       result(null,err);
     }else{
       console.log("suuuuuuuuuuuuuuuuuuuuuuuuuuu");
-      result(null, res);
+      result(null, res.rows);
     }
   });
 };
