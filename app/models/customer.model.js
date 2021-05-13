@@ -51,7 +51,7 @@ Customer.findMemes = (value, result) => {
   sql.query("select memes.* from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value])
   sql.query("select memes.* from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[value])
   sql.query("select memes.* from memes where name like $1;",[value])
-  result(null, res);
+  result(null, result);
 };
 
 Customer.getAll = result => {
