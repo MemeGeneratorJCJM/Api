@@ -131,16 +131,11 @@ Customer.removeAll = result => {
 };
 
 Customer.login = (email, password, result) => {
-  var query = sql.query("SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"';");
-  var rows = [];
-  query.on("row", function (row, result) {
-    result.addRow(row);
-});
-
-query.on("end", function (result) {
-    console.log(JSON.stringify(result.rows, null, "    "));
-    client.end();
-});
+  //var query = sql.query("SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"';");
+  var res = await sql.query("SELECT * FROM users");
+  res.rows.forEach(row=>{
+      console.log(row);
+  });
   /*sql.query(
     "SELECT idUser,email,username,password,idMeme FROM users WHERE email like '"+email+"' and password like '"+password+"'",(err,res) => {
     if (err) {
