@@ -70,7 +70,7 @@ app.get("/retrieve-image/:cloudinary_id", (request, response) => {
 
   db.pool.connect((err, client) => {
     // query to find image
-    const query = "SELECT * FROM images WHERE cloudinary_id = $1";
+    const query = "SELECT * FROM images WHERE cloudinary_id = "+ cloudinary_id;
     const value = [cloudinary_id];
 
     // execute query
