@@ -1,9 +1,9 @@
 // ======== Const ======== //
 const express = require("express");
+const app = express();
 const cloudinary = require('cloudinary').v2;
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
-const app = express();
 var cors = require('cors');
 //var crypto = require('crypto');
 //const upload = require('express-fileupload');
@@ -41,3 +41,27 @@ require("./app/routes/customer.routes.js")(app);
 // ======== Listener ======== //
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
+// image upload API
+app.post("/image-upload", (request, response) => {
+    // collected image from a user
+    const data = {
+      image: request.body.image,
+    }
+
+    // upload image here
+    cloudinary.uploader.upload(data.image)
+    .then((result) => {
+      response.status(200).send({
+        message: "success",
+        result,
+      });
+    }).catch((error) => {
+      response.status(500).send({
+        message: "failure",
+        error,
+      });
+    });
+
+});
+
+module.exports = app;
