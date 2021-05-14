@@ -17,7 +17,7 @@ Customer.create = (email,username,password,idMeme, result) => {
     }
     const createdUser = '{"Username": "'+username+'","Email": "'+email+'","Password": "'+password+'","idMeme": "'+idMeme+'"}';
     console.log("Customer created with Username: "+username+",Email: "+email+",Password: "+password+",idMeme:"+idMeme);
-    result(null,res.rows);
+    result(null,createdUser);
   });
 };
 
