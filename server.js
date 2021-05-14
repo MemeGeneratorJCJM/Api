@@ -31,5 +31,5 @@ require("./app/routes/meme.routes.js")(app);
 require("./app/routes/customer.routes.js")(app);
 
 // ======== Listener ======== //
-app.listen(PORT, () => {console.log(`Server started at http://localhost:${PORT}`)});
+app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 

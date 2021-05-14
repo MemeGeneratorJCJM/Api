@@ -47,6 +47,20 @@ Customer.findByUsername = (username, result) => {
   });
 };
 
+Customer.findMemes = (value, result) => {
+  sql.query(
+    "select distinct memes.file from categories,memes,users where categories.name like $1 or users.username like $1 or memes.name like $1 or users.idMeme = memes.idMeme or memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("users: ", res);
+    result(null, res);
+  });
+};
+
 Customer.getAll = result => {
   sql.query("SELECT * FROM users;", (err, res) => {
     if (err) {
@@ -124,11 +138,11 @@ Customer.login = (email, password, result) => {
       result(null, err);
       return;
     }
+    // hay que tratar cuando el user no existe, devuelve status 200 OK
     if (res.rows.length <= 0){
       console.log("error: ", err);
       result(null,err);
     }else{
-      console.log("suuuuuuuuuuuuuuuuuuuuuuuuuuu");
       result(null, res.rows);
     }
   });
