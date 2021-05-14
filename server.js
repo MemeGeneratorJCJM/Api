@@ -41,20 +41,25 @@ require("./app/routes/customer.routes.js")(app);
 // ======== Listener ======== //
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
-// image upload API
+// ======== SQL ======== //
+const sql = require("./db.js");
+
+// ======== Image API ======== //
 app.post("/image-upload", (request, response) => {
     // collected image from a user
     const data = {
     	title: request.body.title,
 		image: request.body.image,
-    }
+    };
 
     // upload image here
     cloudinary.uploader.upload(data.image)
     .then((result) => {
+      const a = sql.query("select * from users;");
       response.status(200).send({
         message: "success",
         result,
+        a,
       });
     }).catch((error) => {
       response.status(500).send({
