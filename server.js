@@ -41,3 +41,61 @@ require("./app/routes/customer.routes.js")(app);
 // ======== Listener ======== //
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
+// image upload API
+app.post("/image-upload", (request, response) => {
+    // collected image from a user
+    const data = {
+      image: request.body.image,
+    }
+
+    // upload image here
+    cloudinary.uploader.upload(data.image)
+    .then((result) => {
+      response.status(200).send({
+        message: "success",
+        result,
+      });
+    }).catch((error) => {
+      response.status(500).send({
+        message: "failure",
+        error,
+      });
+    });
+
+});
+
+app.get("/retrieve-image/:cloudinary_id", (request, response) => {
+  // data from user
+  const { cloudinary_id } = request.params;
+
+  db.pool.connect((err, client) => {
+    // query to find image
+    const query = "SELECT * FROM images WHERE cloudinary_id = $1";
+    const value = [cloudinary_id];
+
+    // execute query
+    client
+      .query(query, value)
+      .then((output) => {
+        response.status(200).send({
+          status: "success",
+          data: {
+            id: output.rows[0].cloudinary_id,
+            title: output.rows[0].title,
+            url: output.rows[0].image_url,
+          },
+        });
+      })
+      .catch((error) => {
+        response.status(401).send({
+          status: "failure",
+          data: {
+            message: "could not retrieve record!",
+            error,
+          },
+        });
+      });
+  });
+});
+
+module.exports = app;
