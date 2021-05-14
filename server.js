@@ -51,10 +51,15 @@ app.post("/image-upload", (request, response) => {
     // upload image here
     cloudinary.uploader.upload(data.image)
     .then((result) => {
-      response.status(200).send({
-        message: "success",
-        result,
-      });
+      	response.status(201).send({
+          status: "success",
+          data: {
+            message: "Image Uploaded Successfully",
+            title: result.title,
+            cloudinary_id: result.cloudinary_id,
+            image_url: result.image_url,
+          },
+		});
     }).catch((error) => {
       response.status(500).send({
         message: "failure",
