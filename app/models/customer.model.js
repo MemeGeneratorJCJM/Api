@@ -154,7 +154,7 @@ Customer.login = (email, password, result) => {
       return;
     }
     // hay que tratar cuando el user no existe, devuelve status 200 OK
-    result(null,res.rows.length);
+    result(null,"a entrado con: "+res.rows.length);
     /*
     if (!result || !result.rows || !result.rows.length){
       console.log("error: ", err);
