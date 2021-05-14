@@ -162,7 +162,7 @@ Customer.login = (email, password, result) => {
   });
 };
 
-Customer.uploadImages = (email, password, result) => {
+Customer.uploadImages = (image, result) => {
   // collected image from a user
   const data = {
     image: request.body.image,

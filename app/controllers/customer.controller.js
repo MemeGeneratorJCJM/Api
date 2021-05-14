@@ -182,7 +182,7 @@ exports.loginUser = (req,res) =>{
 }
 
 exports.uploadImage = (req,res) => {
-  Customer.uploadImages(req.body.email,req.body.password, (err, data) => {
+  Customer.uploadImages(req.body.image, (err, data) => {
     cloudinary.uploader.upload(data.image)
         .then((result) => {
           response.status(200).send({
