@@ -153,11 +153,11 @@ Customer.login = (email, password, result) => {
       result(null, err);
       return;
     }
-    
+
     if(res.rows.length <= 0){
-      result(null,"NO"+res.rows.length)
+      result(null,"Usuario no encontrado");
     }else{
-      result(null,"SI"+res.rows.length);
+      result(null,res.rows);
     }
   });
 };
