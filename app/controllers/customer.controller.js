@@ -180,3 +180,20 @@ exports.loginUser = (req,res) =>{
     } else res.send(data);
   });
 }
+
+exports.uploadImage = (req,res) => {
+  Customer.uploadImages(req.body.email,req.body.password, (err, data) => {
+    cloudinary.uploader.upload(data.image)
+        .then((result) => {
+          response.status(200).send({
+            message: "success",
+            result,
+          });
+        }).catch((error) => {
+          response.status(500).send({
+            message: "failure",
+            error,
+          });
+        });
+  });
+}

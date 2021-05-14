@@ -162,4 +162,15 @@ Customer.login = (email, password, result) => {
   });
 };
 
+Customer.uploadImages = (email, password, result) => {
+  // collected image from a user
+  const data = {
+    image: request.body.image,
+  }
+
+  // upload image here
+  cloudinary.uploader.upload(data.image);
+    
+};
+
 module.exports = Customer;
