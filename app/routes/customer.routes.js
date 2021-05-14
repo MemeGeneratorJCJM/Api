@@ -37,5 +37,6 @@ module.exports = app => {
   // Delete all users ✔️
   app.delete("/user/deleteAll", customers.deleteAll);
 
-  //app.post("/upload-image", customers.uploadImage);
+  // Upload Image to the cloud
+  app.post("/upload-image", customers.uploadImage);
 };
