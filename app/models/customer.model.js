@@ -16,7 +16,7 @@ Customer.create = (email,username,password,idMeme, result) => {
       return;
     }
     const createdUser = '{"Username": "'+username+'","Email": "'+email+'","Password": "'+password+'","idMeme": "'+idMeme+'"}';
-    console.log("Customer created");
+    console.log("Customer created with Username: "+username+",Email: "+email+",Password: "+password+",idMeme:"+idMeme);
     result(null,res.rows);
   });
 };
@@ -29,7 +29,7 @@ Customer.findUserByEmail = (email, result) => {
       return;
     }
 
-    console.log("users: ", res);
+    console.log("User: ", res.rows);
     result(null, res.rows);
   });
 };
@@ -43,8 +43,8 @@ Customer.findMemesByUsername = (username, result) => {
       return;
     }
 
-    console.log("users: ", res);
-    result(null, res);
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
   });
 };
 
@@ -57,8 +57,8 @@ Customer.findMemesByCategoryName = (value, result) => {
       return;
     }
 
-    console.log("users: ", res);
-    result(null, res);
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
   });
 };
 
@@ -71,8 +71,8 @@ Customer.findMemesByMemeName = (value, result) => {
       return;
     }
 
-    console.log("users: ", res);
-    result(null, res);
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
   });
 };
 
@@ -84,7 +84,7 @@ Customer.getAll = result => {
       return;
     }
 
-    console.log("users: ", res);
+    console.log("users: ", res.rows);
     result(null, res.rows);
   });
 };
