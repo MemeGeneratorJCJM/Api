@@ -153,16 +153,12 @@ Customer.login = (email, password, result) => {
       result(null, err);
       return;
     }
-    // hay que tratar cuando el user no existe, devuelve status 200 OK
-    result(null,"a entrado con: "+res.rows.length);
-    /*
-    if (!result || !result.rows || !result.rows.length){
-      console.log("error: ", err);
-      result(null,res.rows);
+    
+    if(res.rows.length <= 0){
+      result(null,"NO"+res.rows.length)
     }else{
-      result(null, res.rows);
+      result(null,"SI"+res.rows.length);
     }
-    */
   });
 };
 
