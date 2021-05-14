@@ -38,8 +38,8 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single User with a email
-exports.findOne = (req, res) => {
-  Customer.findByEmail(req.params.email, (err, data) => {
+exports.findOneUserByEmail = (req, res) => {
+  Customer.findUserByEmail(req.params.email, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -55,8 +55,8 @@ exports.findOne = (req, res) => {
 };
 
 // Find asome memes with a username
-exports.findOneByUsername = (req, res) => {
-  Customer.findByUsername(req.params.username, (err, data) => {
+exports.findMemeByUsername = (req, res) => {
+  Customer.findMemesByUsername(req.params.username, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -72,8 +72,25 @@ exports.findOneByUsername = (req, res) => {
 };
 
 // Find some memes with username, category name or meme name 
-exports.findSomeMemes = (req, res) => {
-  Customer.findMemes(req.params.value, (err, data) => {
+exports.findMemeByCategoryName = (req, res) => {
+  Customer.findMemesByCategoryName(req.params.value, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with value ${req.params.value}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User with value " + req.params.value
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// Find some memes with username, category name or meme name 
+exports.findMemeByMemeName = (req, res) => {
+  Customer.findMemesByCategoryName(req.params.value, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

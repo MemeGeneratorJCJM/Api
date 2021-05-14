@@ -17,14 +17,16 @@ module.exports = app => {
   app.get("/user/getAll", customers.findAll);
 
   // Retrieve a single User with email ✔️
-  app.get("/user/findByEmail/:email", customers.findOne);
+  app.get("/user/findUserByEmail/:email", customers.findOneUserByEmail);
 
-    // Retrieve some memes with username 
-  app.get("/user/findMemesByUsername/:username", customers.findOneByUsername);
+  // Retrieve some memes with username 
+  app.get("/user/findMemesByUsername/:username", customers.findMemeByUsername);
+  
+  // Retrieve some memes with category name 
+  app.get("/user/findMemesByCategoryName/:value", customers.findMemeByCategoryName);
 
-  // Retrieve some memes with username, category name or meme name
-  ///-------------------------dividir en 3
-  app.get("/user/findMemes/:value", customers.findSomeMemes);
+  // Retrieve some memes with meme name 
+  app.get("/user/findMemesByMemeName/:value", customers.findMemeByMemeName);
 
   // Update a User with idUser ✔️
   app.put("/user/update/:idUser", customers.update);
