@@ -90,7 +90,7 @@ exports.findMemeByCategoryName = (req, res) => {
 
 // Find some memes with username, category name or meme name 
 exports.findMemeByMemeName = (req, res) => {
-  Customer.findMemesByCategoryName(req.params.value, (err, data) => {
+  Customer.findMemesByMemeName(req.params.value, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
