@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
 // ======== MySQL ======== //
 require("./app/routes/meme.routes.js")(app);
 require("./app/routes/customer.routes.js")(app);
+const sql = require("./app/models/db.js");
 
 // ======== Listener ======== //
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
@@ -83,7 +84,7 @@ app.post("/persist-image", (request, response) => {
 		response.status(201).send({
         	message: "success",
         	result,
-      	})
+      	});
       }).catch((e) => {
         response.status(500).send({
           message: "failure",
