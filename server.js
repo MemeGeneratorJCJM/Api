@@ -75,25 +75,19 @@ app.post("/persist-image", (request, response) => {
   cloudinary.uploader.upload(data.image)
   .then((image) => {
     db.pool.connect((err, client) => {
-      const insertQuery = 'select * from memes;';
-      const values = [data.title, image.public_id, image.secure_url];
+      //const insertQuery = 'select * from memes;';
+      //const values = [data.title, image.public_id, image.secure_url];
 
-      client.query(insertQuery, values)
+      client.query('select * from memes;')
       .then((result) => {
-        result = result.rows[0];
-        response.status(201).send({
-          status: "success",
-          data: {
-            message: "Image Uploaded Successfully",
-            title: result.title,
-            cloudinary_id: result.cloudinary_id,
-            image_url: result.image_url,
-          },
-        })
+		response.status(201).send({
+        	message: "success",
+        	result,
+      	})
       }).catch((e) => {
         response.status(500).send({
           message: "failure",
-          e,
+          error,
         });
       })
     })  
