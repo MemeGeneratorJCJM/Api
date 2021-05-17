@@ -8,7 +8,7 @@ const Meme = function(meme) {
 };
 
 Meme.create = (name,route,idCategory,result) => {
-  sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[name,route,idCategory], (err, res) => {
+  sql.query("INSERT INTO memes (name,rute,idCategory) VALUES ($1,$2,$3);",[name,route,idCategory], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
