@@ -66,7 +66,7 @@ app.post("/image-upload", (request, response) => {
     });
 
 });
-/*
+
 app.post("/persist-image", (request, response) => {
   const data = {
     title: request.body.title,
@@ -104,7 +104,7 @@ app.post("/persist-image", (request, response) => {
     });
   });
 });
-*/
+
 /*
 app.get("/get-image", (request, response) => {
 	
