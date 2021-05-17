@@ -43,6 +43,29 @@ app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
 
 // ======== Image API ======== //
+app.post("/image-upload", (request, response) => {
+    // collected image from a user
+    const data = {
+    	title: request.body.title,
+		image: request.body.image,
+    }
+
+    // upload image here
+    cloudinary.uploader.upload(data.image)
+    .then((result) => {
+      response.status(200).send({
+        message: "success",
+        result,
+      });
+    }).catch((error) => {
+      response.status(500).send({
+        message: "failure",
+        error,
+      });
+    });
+
+});
+/*
 app.post("/persist-image", (request, response) => {
   const data = {
     title: request.body.title,
@@ -80,7 +103,7 @@ app.post("/persist-image", (request, response) => {
     });
   });
 });
-
+*/
 /*
 app.get("/get-image", (request, response) => {
 	
@@ -88,29 +111,8 @@ app.get("/get-image", (request, response) => {
 
 */
 
-/*
-app.post("/image-upload", (request, response) => {
-    // collected image from a user
-    const data = {
-    	title: request.body.title,
-		image: request.body.image,
-    }
 
-    // upload image here
-    cloudinary.uploader.upload(data.image)
-    .then((result) => {
-      response.status(200).send({
-        message: "success",
-        result,
-      });
-    }).catch((error) => {
-      response.status(500).send({
-        message: "failure",
-        error,
-      });
-    });
 
-});
-*/
+
 
 module.exports = app;
