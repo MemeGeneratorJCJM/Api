@@ -60,7 +60,7 @@ Meme.deleteMemeById = (idMeme, result) => {
 
 Meme.findMemesByUsername = (username, result) => {
   sql.query(
-    "select memes.file from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[username], (err, res) => {
+    "select memes.rute from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[username], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -74,7 +74,7 @@ Meme.findMemesByUsername = (username, result) => {
 
 Meme.findMemesByCategoryName = (value, result) => {
   sql.query(
-    "select memes.file from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    "select memes.rute from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -88,7 +88,7 @@ Meme.findMemesByCategoryName = (value, result) => {
 
 Meme.findMemesByMemeName = (value, result) => {
   sql.query(
-    "select memes.file from memes where name like $1;",[value], (err, res) => {
+    "select memes.rute from memes where name like $1;",[value], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
