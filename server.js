@@ -49,13 +49,13 @@ app.post("/image-upload", (request, response) => {
     	title: request.body.title,
 		image: request.body.image,
     }
-
+    var a;
     // upload image here
     cloudinary.uploader.upload(data.image)
     .then((result) => {
-    	var a = result.url;
+    a = result.url;
       response.status(200).send({
-        message: a,
+        message: "success",
         result,
       });
     }).catch((error) => {
