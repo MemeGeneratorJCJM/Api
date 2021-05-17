@@ -113,4 +113,21 @@ app.post("/persist-image", (request, response) => {
   });
 });
 
+app.post("/get-image", (request, response) => {
+	var url = request.body.url;
+    cloudinary.createDownloader().fetchImage(url)
+    .then((result) => {
+      response.status(200).send({
+        message: "success",
+        result,
+      });
+    }).catch((error) => {
+      response.status(500).send({
+        message: "failure",
+        error,
+      });
+    });
+
+});
+
 module.exports = app;
