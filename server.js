@@ -43,52 +43,20 @@ app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
 
 // ======== Image API ======== //
-/*
-app.post("/image-upload", (request, response) => {
-    // collected image from a user
-    const data = {
-    	title: request.body.title,
-		image: request.body.image,
-    }
-
-    // upload image here
-    cloudinary.uploader.upload(data.image)
-    .then((result) => {
-      response.status(200).send({
-        message: "success",
-        result,
-      });
-    }).catch((error) => {
-      response.status(500).send({
-        message: "failure",
-        error,
-      });
-    });
-
-});
-*/
-// persist image
 app.post("/persist-image", (request, response) => {
-  // collected image from a user
   const data = {
     title: request.body.title,
     image: request.body.image
   }
-
-  // upload image here
   cloudinary.uploader.upload(data.image)
   .then((image) => {
     db.pool.connect((err, client) => {
-      // inset query to run if the upload to cloudinary is successful
-      const insertQuery = 'INSERT INTO images (title, cloudinary_id, image_url) VALUES($1,$2,$3) RETURNING *';
+      const insertQuery = 'INSERT INTO memes (title, cloudinary_id, image_url) VALUES($1,$2,$3) RETURNING *';
       const values = [data.title, image.public_id, image.secure_url];
 
-      // execute query
       client.query(insertQuery, values)
       .then((result) => {
         result = result.rows[0];
-
-        // send success response
         response.status(201).send({
           status: "success",
           data: {
@@ -114,9 +82,19 @@ app.post("/persist-image", (request, response) => {
 });
 
 app.get("/get-image", (request, response) => {
-	var url = request.body.url;
-	console.log(url);
-    cloudinary.downloader().fetchImage(url)
+	
+});
+
+/*
+app.post("/image-upload", (request, response) => {
+    // collected image from a user
+    const data = {
+    	title: request.body.title,
+		image: request.body.image,
+    }
+
+    // upload image here
+    cloudinary.uploader.upload(data.image)
     .then((result) => {
       response.status(200).send({
         message: "success",
@@ -130,5 +108,6 @@ app.get("/get-image", (request, response) => {
     });
 
 });
+*/
 
 module.exports = app;
