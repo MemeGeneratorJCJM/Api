@@ -19,15 +19,6 @@ module.exports = app => {
   // Retrieve a single User with email ✔️
   app.get("/user/findUserByEmail/:email", customers.findOneUserByEmail);
 
-  // Retrieve some memes with username 
-  app.get("/user/findMemesByUsername/:username", customers.findMemeByUsername);
-  
-  // Retrieve some memes with category name 
-  app.get("/user/findMemesByCategoryName/:value", customers.findMemeByCategoryName);
-
-  // Retrieve some memes with meme name 
-  app.get("/user/findMemesByMemeName/:value", customers.findMemeByMemeName);
-
   // Update a User with idUser ✔️
   app.put("/user/update/:idUser", customers.update);
 

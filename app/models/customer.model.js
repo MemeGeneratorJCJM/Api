@@ -34,48 +34,6 @@ Customer.findUserByEmail = (email, result) => {
   });
 };
 
-Customer.findMemesByUsername = (username, result) => {
-  sql.query(
-    "select memes.file from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[username], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Memes: ", res.rows);
-    result(null, res.rows);
-  });
-};
-
-Customer.findMemesByCategoryName = (value, result) => {
-  sql.query(
-    "select memes.file from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Memes: ", res.rows);
-    result(null, res.rows);
-  });
-};
-
-Customer.findMemesByMemeName = (value, result) => {
-  sql.query(
-    "select memes.file from memes where name like $1;",[value], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Memes: ", res.rows);
-    result(null, res.rows);
-  });
-};
-
 Customer.getAll = result => {
   sql.query("SELECT * FROM users;", (err, res) => {
     if (err) {

@@ -16,7 +16,7 @@ Meme.create = (name,route,idCategory,result) => {
     }
 
     console.log("created Meme");
-    result(null, { id: res.idUser });
+    result(null, result);
   });
 };
 
@@ -40,7 +40,6 @@ Meme.findMemeByName = (name, result) => {
 };
 
 Meme.deleteMemeById = (idMeme, result) => {
-  console.log("tamos");
   sql.query(`DELETE FROM memes WHERE idMeme = ${idMeme}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -56,6 +55,48 @@ Meme.deleteMemeById = (idMeme, result) => {
 
     console.log("deleted Meme with idMeme: ", idMeme);
     result(null, res);
+  });
+};
+
+Meme.findMemesByUsername = (username, result) => {
+  sql.query(
+    "select memes.file from users,memes where users.username like $1 and users.idMeme = memes.idMeme;",[username], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
+  });
+};
+
+Meme.findMemesByCategoryName = (value, result) => {
+  sql.query(
+    "select memes.file from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
+  });
+};
+
+Meme.findMemesByMemeName = (value, result) => {
+  sql.query(
+    "select memes.file from memes where name like $1;",[value], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
   });
 };
 

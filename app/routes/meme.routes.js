@@ -9,4 +9,13 @@ module.exports = app => {
 
   // Delete by idMeme
   app.delete("/meme/deleteById/:idMeme", meme.deleteById);
+
+  // Retrieve some memes with username 
+  app.get("/user/findMemesByUsername/:username", meme.findMemeByUsername);
+  
+  // Retrieve some memes with category name 
+  app.get("/user/findMemesByCategoryName/:value", meme.findMemeByCategoryName);
+
+  // Retrieve some memes with meme name 
+  app.get("/user/findMemesByMemeName/:value", meme.findMemeByMemeName);
 }
