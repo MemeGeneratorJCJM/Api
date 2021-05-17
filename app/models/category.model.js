@@ -56,4 +56,4 @@ Category.deletecategoryById = (idcategory, result) => {
   });
 };
 
-module.exports = category;
+module.exports = Category;
