@@ -16,7 +16,7 @@ Meme.create = (name,route,idCategory,result) => {
     }
 
     console.log("created Meme");
-    result(null, result);
+    result(null, res);
   });
 };
 

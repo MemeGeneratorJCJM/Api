@@ -14,7 +14,7 @@ Category.create = (name,result) => {
     }
 
     console.log("Created Category");
-    result(null, result);
+    result(null, res);
   });
 };
 
