@@ -66,30 +66,7 @@ app.post("/image-upload", (request, response) => {
     });
 });
 
-app.post("/meme/create", (request, response) => {
-  	const data = {
-		name=request.body.name,
-		route=request.body.route,
-		idCategory=request.body.idCategory
-	}
-  // Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
-  sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[data.name,data.file,data.idCategory], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
 
-    console.log("created Meme: ", { id: res.idUser, ...newMeme });
-    result(null, { id: res.idUser, ...newMeme });
-  });
-});
-/*
 app.post("/persist-image", (request, response) => {
   const data = {
     title: request.body.title,
@@ -98,7 +75,7 @@ app.post("/persist-image", (request, response) => {
   cloudinary.uploader.upload(data.image)
   .then((image) => {
     db.pool.connect((err, client) => {
-      const insertQuery = 'INSERT INTO images (title, cloudinary_id, image_url) VALUES($1,$2,$3) RETURNING *';
+      const insertQuery = 'select * from memes;';
       const values = [data.title, image.public_id, image.secure_url];
 
       client.query(insertQuery, values)
@@ -128,12 +105,6 @@ app.post("/persist-image", (request, response) => {
   });
 });
 
-/*
-app.get("/get-image", (request, response) => {
-	
-});
-
-*/
 
 
 

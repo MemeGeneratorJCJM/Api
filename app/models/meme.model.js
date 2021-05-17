@@ -3,20 +3,20 @@ const sql = require("./db.js");
 // constructor
 const Meme = function(meme) {
   this.name = meme.name;
-  this.file = meme.file;
+  this.route = meme.route;
   this.idCategory = meme.idCategory;
 };
 
-Meme.create = (name,file,idCategory,result) => {
-  sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[name,file,idCategory], (err, res) => {
+Meme.create = (name,route,idCategory,result) => {
+  sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[name,route,idCategory], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created Meme: ", { id: res.idUser, ...newMeme });
-    result(null, { id: res.idUser, ...newMeme });
+    console.log("created Meme");
+    result(null, { id: res.idUser });
   });
 };
 

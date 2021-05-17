@@ -9,7 +9,7 @@ exports.createMeme = (req, res) => {
     });
   }
   // Save Meme in the database
-  Meme.create(req.body.name,req.body.file,req.body.idCategory, (err, data) => {
+  Meme.create(req.body.name,req.body.route,req.body.idCategory, (err, data) => {
     if (err)
       res.status(500).send({
         message:
