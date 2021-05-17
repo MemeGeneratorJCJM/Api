@@ -51,7 +51,7 @@ app.post("/persist-image", (request, response) => {
   cloudinary.uploader.upload(data.image)
   .then((image) => {
     db.pool.connect((err, client) => {
-      const insertQuery = 'INSERT INTO memes (title, cloudinary_id, image_url) VALUES($1,$2,$3) RETURNING *';
+      const insertQuery = 'INSERT INTO images (title, cloudinary_id, image_url) VALUES($1,$2,$3) RETURNING *';
       const values = [data.title, image.public_id, image.secure_url];
 
       client.query(insertQuery, values)
@@ -81,9 +81,12 @@ app.post("/persist-image", (request, response) => {
   });
 });
 
+/*
 app.get("/get-image", (request, response) => {
 	
 });
+
+*/
 
 /*
 app.post("/image-upload", (request, response) => {
