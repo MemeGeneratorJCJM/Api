@@ -1,23 +1,15 @@
 const Meme = require("../models/meme.model.js");
 
 // Create and Save a new Meme
-exports.create = (req, res) => {
+exports.createMeme = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
   }
-
-  // Create a Meme
-  const meme = new Meme({
-      name: req.body.name,
-      file: req.body.file,
-      idCategory: req.body.idCategory
-  });
-
   // Save Meme in the database
-  Meme.create(meme, (err, data) => {
+  Meme.create(req.body.name,req.body.file,req.body.idCategory, (err, data) => {
     if (err)
       res.status(500).send({
         message:
