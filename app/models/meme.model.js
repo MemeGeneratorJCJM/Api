@@ -21,7 +21,7 @@ Meme.create = (name,route,idCategory,result) => {
 };
 
 Meme.findMemeByName = (name, result) => {
-  sql.query(`SELECT * FROM memes WHERE name like ${name}`, (err, res) => {
+  sql.query(`SELECT * FROM memes WHERE name like $1`,[name] (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -40,7 +40,7 @@ Meme.findMemeByName = (name, result) => {
 };
 
 Meme.deleteMemeById = (idMeme, result) => {
-  sql.query(`DELETE FROM memes WHERE idMeme = ${idMeme}`, (err, res) => {
+  sql.query(`DELETE FROM memes WHERE idMeme = $1`,[idMeme], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
