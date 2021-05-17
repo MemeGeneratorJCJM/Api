@@ -113,7 +113,7 @@ app.post("/persist-image", (request, response) => {
   });
 });
 
-app.post("/get-image", (request, response) => {
+app.get("/get-image", (request, response) => {
 	var url = request.body.url;
     cloudinary.createDownloader().fetchImage(url)
     .then((result) => {
