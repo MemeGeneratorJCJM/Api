@@ -115,6 +115,7 @@ app.post("/persist-image", (request, response) => {
 
 app.get("/get-image", (request, response) => {
 	var url = request.body.url;
+	console.log(url);
     cloudinary.createDownloader().fetchImage(url)
     .then((result) => {
       response.status(200).send({
