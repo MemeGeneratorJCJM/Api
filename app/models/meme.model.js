@@ -21,7 +21,7 @@ Meme.create = (name,route,idCategory,result) => {
 };
 
 Meme.findMemeByName = (name, result) => {
-  sql.query("SELECT * FROM memes WHERE name like $1;",[name], (err, res) => {
+  sql.query("SELECT * FROM memes WHERE name like "+name+";", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
