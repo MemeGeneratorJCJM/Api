@@ -55,7 +55,7 @@ app.post("/image-upload", (request, response) => {
     .then((result) => {
       response.status(200).send({
         message: "success",
-        result.rows,
+        result,
       });
     }).catch((error) => {
       response.status(500).send({
