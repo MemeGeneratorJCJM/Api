@@ -1,10 +1,5 @@
 const sql = require("./db.js");
-const cloudinary = require('cloudinary').v2;
-cloudinary.config({
-  cloud_name: "memegenerator",
-  api_key: "247763431775767",
-  api_secret: "1KXRrFi3N877fBy0xuLEUiR35SA"
-});
+
 // constructor
 const Meme = function(meme) {
   this.name = meme.name;
@@ -13,22 +8,6 @@ const Meme = function(meme) {
 };
 
 Meme.create = (name,file,idCategory,result) => {
-    const data = {
-      image: request.body.image,
-    }
-    // upload image here
-    cloudinary.uploader.upload(data.image).then((result) => {
-      file = result.url;
-      response.status(200).send({
-        message: "success",
-        result,
-      });
-    }).catch((error) => {
-      response.status(500).send({
-        message: "failure",
-        error,
-      });
-    });
   sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[name,file,idCategory], (err, res) => {
     if (err) {
       console.log("error: ", err);

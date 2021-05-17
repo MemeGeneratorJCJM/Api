@@ -1,7 +1,7 @@
 // ======== Const ======== //
 const express = require("express");
 const app = express();
-//const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary').v2;
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 var cors = require('cors');
@@ -14,13 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // ======== Cloudinary ======== //
-
-/*cloudinary.config({
+cloudinary.config({
 	cloud_name: "memegenerator",
 	api_key: "247763431775767",
 	api_secret: "1KXRrFi3N877fBy0xuLEUiR35SA"
 });
-*/
+
 // Enrutamiento para todas las peticiones que lleguen, prepara el header de la response para evitar errores
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -42,7 +41,7 @@ require("./app/routes/customer.routes.js")(app);
 // ======== Listener ======== //
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
-/*
+
 // ======== Image API ======== //
 app.post("/image-upload", (request, response) => {
     // collected image from a user
@@ -65,9 +64,32 @@ app.post("/image-upload", (request, response) => {
         error,
       });
     });
-
 });
 
+app.post("/meme/create", (request, response) => {
+  	const data = {
+		name=request.body.name,
+		route=request.body.route,
+		idCategory=request.body.idCategory
+	}
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  sql.query("INSERT INTO memes (name,route,idCategory) VALUES ($1,$2,$3);",[data.name,data.file,data.idCategory], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created Meme: ", { id: res.idUser, ...newMeme });
+    result(null, { id: res.idUser, ...newMeme });
+  });
+});
+/*
 app.post("/persist-image", (request, response) => {
   const data = {
     title: request.body.title,
