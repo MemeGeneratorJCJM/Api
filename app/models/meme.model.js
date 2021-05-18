@@ -20,25 +20,6 @@ Meme.create = (name,route,idCategory,result) => {
   });
 };
 
-Meme.findMemeByName = (name, result) => {
-  sql.query("SELECT * FROM memes WHERE name like "+name+";", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-
-    if (res.length) {
-      console.log("found meme: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    // not found Meme with the id
-    result({ kind: "not_found" }, null);
-  });
-};
-
 Meme.deleteMemeById = (idMeme, result) => {
   sql.query("DELETE FROM memes WHERE idMeme = $1;",[idMeme], (err, res) => {
     if (err) {
@@ -97,19 +78,6 @@ Meme.findMemesByMemeName = (value, result) => {
 
     console.log("Memes: ", res.rows);
     result(null, res.rows);
-  });
-};
-
-Meme.createCategory = (name,result) => {
-  sql.query("INSERT INTO categories name VALUES $1;",[name], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-
-    console.log("created Meme");
-    result(null, res);
   });
 };
 

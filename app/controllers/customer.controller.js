@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     if (err) {
       if (err.kind === "No Content") {
         res.status(204).send({
-          message: `OKEI`
+          message: `User Created`
         });
       } else {
         res.status(500).send({
