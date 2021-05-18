@@ -103,3 +103,22 @@ exports.findMemeByMemeName = (req, res) => {
     } else res.send(data);
   });
 };
+
+// Create and Save a new category
+exports.createcategory = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  // Save category in the database
+  Meme.create(req.body.name, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the category."
+      });
+    else res.send(data);
+  });
+};

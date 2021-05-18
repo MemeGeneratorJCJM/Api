@@ -100,4 +100,21 @@ Meme.findMemesByMemeName = (value, result) => {
   });
 };
 
+const Category = function(category) {
+  this.name = category.name;
+};
+
+Category.create = (name,result) => {
+  sql.query("INSERT INTO categories (name) VALUES ($1);",[name], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("Created Category");
+    result(null, res);
+  });
+};
+
 module.exports = Meme;
