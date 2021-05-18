@@ -26,36 +26,26 @@ node server.js
         <tr>
             <th>Params</th>
             <th>Value</th>
-            <th>Body</th>
-            <th>Content</th>
             <th>Description</th>
         </tr>
         <tr>
             <td>email</td>
             <td>string</td>
-            <td></td>
-            <td></td>
             <td>User's email</td>
         </tr>
         <tr>
             <td>username</td>
             <td>string</td>
-            <td></td>
-            <td></td>
             <td>User's username</td>
         </tr>
         <tr>
             <td>password</td>
             <td>string</td>
-            <td></td>
-            <td></td>
             <td>User's password</td>
         </tr>
         <tr>
             <td>idMeme</td>
             <td>Array[String]</td>
-            <td></td>
-            <td></td>
             <td>User's idMemes</td>
         </tr>
    </table>
@@ -73,10 +63,10 @@ node server.js
             <th>Description</th>
         </tr>
         <tr>
-            <td>400</td>
+            <td>204</td>
             <td>msg</td>
             <td>JSON</td>
-            <td>Content can not be empty!</td>
+            <td>User Created</td>
         </tr>
         <tr>
             <td>500</td>
