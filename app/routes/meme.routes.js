@@ -20,5 +20,5 @@ module.exports = app => {
   app.get("/user/findMemesByMemeName/:value", meme.findMemeByMemeName);
 
   //Create a new category
-  app.post("/category/create", meme.createCategory);
+  //app.post("/category/create", meme.createCategory);
 }
