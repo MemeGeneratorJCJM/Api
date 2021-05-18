@@ -100,12 +100,8 @@ Meme.findMemesByMemeName = (value, result) => {
   });
 };
 
-const Category = function(category) {
-  this.name = category.name;
-};
-
-Category.createCategory = (name,result) => {
-  sql.query("INSERT INTO categories (name) VALUES ($1);",[name], (err, res) => {
+Meme.createCategory = (name,result) => {
+  sql.query("INSERT INTO categories name VALUES $1;",[name], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -113,7 +109,7 @@ Category.createCategory = (name,result) => {
     }
 
     console.log("Created Category");
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
