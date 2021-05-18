@@ -108,8 +108,8 @@ Meme.createCategory = (name,result) => {
       return;
     }
 
-    console.log("Created Category");
-    result(null, res.rows);
+    console.log("created Meme");
+    result(null, res);
   });
 };
 

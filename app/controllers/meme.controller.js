@@ -112,12 +112,12 @@ exports.createcategory = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-  // Save category in the database
+  // Save Meme in the database
   Meme.createCategory(req.body.name, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the category."
+          err.message || "Some error occurred while creating the Meme."
       });
     else res.send(data);
   });
