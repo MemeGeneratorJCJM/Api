@@ -113,7 +113,7 @@ exports.createcategory = (req, res) => {
     });
   }
   // Save category in the database
-  Meme.create(req.body.name, (err, data) => {
+  Meme.createCategory(req.body.name, (err, data) => {
     if (err)
       res.status(500).send({
         message:

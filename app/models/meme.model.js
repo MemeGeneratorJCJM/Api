@@ -104,7 +104,7 @@ const Category = function(category) {
   this.name = category.name;
 };
 
-Category.create = (name,result) => {
+Category.createCategory = (name,result) => {
   sql.query("INSERT INTO categories (name) VALUES ($1);",[name], (err, res) => {
     if (err) {
       console.log("error: ", err);
