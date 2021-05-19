@@ -1,12 +1,41 @@
 ## Project setup
+
+Abrimos la consola: 
 ```
-npm install
+cmd
 ```
 
-### Run
+Accedemos a la carpeta en la que queremos descargar la api: 
 ```
-node server.js
+cd "CarpetaEnLaQueQueremosDescargarLaAPI"
 ```
+Clonamos el repositorio de Git: 
+```
+git clone https://github.com/MemeGeneratorJCJM/Api
+```
+
+Accedemos a la carpeta clonada: 
+```
+cd Api
+```
+
+Iniciamos sesion en Heroku: 
+```
+heroku login
+```
+
+Creamos un repositorio de Heroku:
+```
+heroku create
+```
+
+Añdimos los archivos a nuestro Heroku:
+```
+git push heroku main
+```
+
+Con esto ya tendriamos subida la API a un heroku propio, ahora solo queda hacer llamadas a Heroku!
+
 
 
 <!DOCTYPE html>
