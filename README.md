@@ -1,5 +1,4 @@
 ## Project setup
-
 Abrimos la consola: 
 ```
 cmd
@@ -36,6 +35,15 @@ git push heroku main
 
 Con esto ya tendriamos subida la API a un heroku propio, ahora solo queda hacer llamadas a Heroku!
 
+## Problemas API
+```
+- Tuvimos problemas en Heroku, ya que al ser cuenta gratuita solo nos permitía hacer una cantidad limitada de pushes, lo cual a desembocado en tener que crear diversos Heroku.
+- A la hora de hacer Queries en la base de datos tuvimos problemas con MySQL, ya que a la hora de crear un servidor necesitábamos de un recurso externo, el cual se ofrecía en diversas páginas, pero era de pago, por lo que decidimos cambiar a PostgreSQL que tenía soporte directo de Heroku.
+```
+## Desarrollo a futuro
+```
+- Posibles llamadas en nuevas funciones
+```
 
 
 <!DOCTYPE html>
