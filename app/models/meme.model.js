@@ -21,7 +21,7 @@ Meme.create = (name,route,idCategory,result) => {
 };
 
 Meme.deleteMemeById = (idMeme, result) => {
-  sql.query("DELETE FROM memes WHERE idMeme = +"idMeme+";", (err, res) => {
+  sql.query("DELETE FROM memes WHERE idMeme = $1;",[meme], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
