@@ -32,7 +32,30 @@ Añdimos los archivos a nuestro Heroku:
 ```
 git push heroku main
 ```
-
+Añdimos PostreSQL a nuestro Heroku:
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+Vamos a acceder a la base de datos de PostgreSQL:
+```
+heroku run bash
+psql $DATABASE_URL
+```
+Con esto hemos accedido a la base de datos, ahora procedemos a crear las tablas:
+```
+create table categories(idCategory SERIAL,name TEXT,PRIMARY KEY(idCategory));
+create table memes (idMeme SERIAL,name TEXT,rute TEXT,idCategory int,PRIMARY KEY(idMeme),FOREIGN KEY (idCategory) REFERENCES categories(idCategory));
+create table users (idUser SERIAL,email TEXT,username TEXT,password TEXT,idMeme int,PRIMARY KEY(idUser),FOREIGN KEY (idMeme) REFERENCES memes(idMeme));
+```
+Ahora introduciremos algunos datos:
+```
+INSERT INTO categories (idCategory, name) VALUES (1,'Doge');
+INSERT INTO categories (idCategory, name) VALUES (2,'TrollFace');
+INSERT INTO memes (idMeme,name,rute,idCategory) VALUES (1,'Doge','https://res.cloudinary.com/memegenerator/image/upload/v1621439974/doge.jpg_423682103_bvhydr.jpg',1);
+INSERT INTO memes (idMeme,name,rute,idCategory) VALUES (2,'Trollface','https://res.cloudinary.com/memegenerator/image/upload/v1621439923/51w7koDjFsL._AC_SX355__be54dl.jpg',2);
+INSERT INTO users (idUser,email,username,password,idMeme) VALUES (1,'user@gmail.com','user','userPassword',1);
+INSERT INTO users (idUser,email,username,password,idMeme) VALUES (1,'user2@gmail.com','user2','user2Password',2);
+```
 Con esto ya tendriamos subida la API a un heroku propio, ahora solo queda hacer llamadas a Heroku!
 
 
