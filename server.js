@@ -43,11 +43,11 @@ app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
 
 // ======== Image API ======== //
-app.get("/image-upload", (request, response) => {
+app.post("/image-upload", (req, res) => {
     // collected image from a user
     const data = {
-    	title: request.body.title,
-		  image: request.body.image,
+    	title: req.body.title,
+		  image: req.body.image,
     }
     var a;
     // upload image here
