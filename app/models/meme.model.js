@@ -16,7 +16,7 @@ Meme.create = (name,route,idCategory,result) => {
     }
 
     console.log("created Meme");
-    result(null, res);
+    result(null, res.rows);
   });
 };
 
@@ -70,6 +70,20 @@ Meme.findMemesByCategoryName = (value, result) => {
 Meme.findMemesByMemeName = (value, result) => {
   sql.query(
     "select memes.rute from memes where name like $1;",[value], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Memes: ", res.rows);
+    result(null, res.rows);
+  });
+};
+
+Meme.findMemesIdByMemeName = (value, result) => {
+  sql.query(
+    "select memes.id from memes where name like $1;",[value], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
