@@ -42,6 +42,7 @@ require("./app/routes/customer.routes.js")(app);
 app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
 
+
 // ======== Image API ======== //
 app.post("/image-upload", (req, res) => {
     // collected image from a user
@@ -54,12 +55,12 @@ app.post("/image-upload", (req, res) => {
     cloudinary.uploader.upload(data.image)
     .then((result) => {
     a = result.url;
-      response.status(200).send({
+      res.status(200).send({
         message: "success",
         result,
       });
     }).catch((error) => {
-      response.status(500).send({
+      res.status(500).send({
         message: "failure",
         error,
       });
