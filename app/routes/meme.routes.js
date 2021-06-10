@@ -14,7 +14,7 @@ module.exports = app => {
   app.get("/meme/findMemesByUsername/:username", meme.findMemeByUsername);
   
   // Retrieve some memes with category name 
-  app.get("/meme/findMemesByCategoryName/:value", meme.findMemeByCategoryName);
+  app.get("/meme/findMemeIdByMemeName/:value", meme.findMemeByCategoryName);
 
   // Retrieve some memes with meme name 
   app.get("/meme/findMemesByMemeName/:value", meme.findMemeByMemeName);
