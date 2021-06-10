@@ -55,7 +55,7 @@ Meme.findMemesByUsername = (username, result) => {
 
 Meme.findMemesByCategoryName = (value, result) => {
   sql.query(
-    "select memes.rute from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
+    "select memes.idMeme from categories,memes where categories.name like $1 and memes.idCategory = categories.idCategory;",[value], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
