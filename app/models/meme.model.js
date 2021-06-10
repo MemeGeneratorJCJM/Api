@@ -83,7 +83,7 @@ Meme.findMemesByMemeName = (value, result) => {
 
 Meme.findMemesIdByMemeName = (value, result) => {
   sql.query(
-    "select * from memes where name like $1;",[value], (err, res) => {
+    "select memes.idMeme from memes where name like $1;",[value], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
