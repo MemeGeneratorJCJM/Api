@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Bienvenido a la API de MemeGenerator" });
 });
 
-// ======== MySQL ======== //
+// ======== Routes ======== //
 require("./app/routes/meme.routes.js")(app);
 require("./app/routes/customer.routes.js")(app);
 
@@ -43,11 +43,11 @@ app.listen(PORT, () => {console.log(`Server started at PORT:${PORT}`)});
 
 
 // ======== Image API ======== //
-app.post("/image-upload", (request, response) => {
+app.get("/image-upload", (request, response) => {
     // collected image from a user
     const data = {
     	title: request.body.title,
-		image: request.body.image,
+		  image: request.body.image,
     }
     var a;
     // upload image here
