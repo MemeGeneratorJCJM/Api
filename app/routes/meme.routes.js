@@ -18,7 +18,4 @@ module.exports = app => {
 
   // Retrieve some memes with meme name 
   app.get("/meme/findMemesByMemeName/:value", meme.findMemeByMemeName);
-
-  // Retrieve meme id with meme name
-  app.get("/meme/findMemeIdByMemeName/:value", meme.findMemeIdByMemeName);
 }

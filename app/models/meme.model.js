@@ -81,18 +81,4 @@ Meme.findMemesByMemeName = (value, result) => {
   });
 };
 
-Meme.findMemesIdByMemeName = (value, result) => {
-  sql.query(
-    "select memes.idMeme from memes where name like $1;",[value], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Memes: ", res.rows);
-    result(null, res.rows);
-  });
-};
-
 module.exports = Meme;

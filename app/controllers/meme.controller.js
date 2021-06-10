@@ -103,20 +103,3 @@ exports.findMemeByMemeName = (req, res) => {
     } else res.send(data);
   });
 };
-
-// Find some memes ids with meme name, category name or meme name 
-exports.findMemeIdByMemeName = (req, res) => {
-  Meme.findMemesByMemeName(req.params.value, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found User with value ${req.params.value}.`
-        });
-      } else {
-        res.status(500).send({
-          message: "Error retrieving User with value " + req.params.value
-        });
-      }
-    } else res.send(data);
-  });
-};
