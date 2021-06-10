@@ -11,11 +11,14 @@ module.exports = app => {
   app.delete("/meme/deleteById/:idMeme", meme.deleteById);
 
   // Retrieve some memes with username 
-  app.get("/user/findMemesByUsername/:username", meme.findMemeByUsername);
+  app.get("/meme/findMemesByUsername/:username", meme.findMemeByUsername);
   
   // Retrieve some memes with category name 
-  app.get("/user/findMemesByCategoryName/:value", meme.findMemeByCategoryName);
+  app.get("/meme/findMemesByCategoryName/:value", meme.findMemeByCategoryName);
 
   // Retrieve some memes with meme name 
-  app.get("/user/findMemesByMemeName/:value", meme.findMemeByMemeName);
+  app.get("/meme/findMemesByMemeName/:value", meme.findMemeByMemeName);
+
+  // Retrieve meme id with meme name
+  app.get("/meme/findMemeIdByMemeName/:value", meme.findMemeIdByMemeName);
 }
