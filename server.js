@@ -9,7 +9,9 @@ var cors = require('cors');
 //const upload = require('express-fileupload');
 
 // ======== App ======== //
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: "1gb"
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
